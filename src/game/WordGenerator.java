@@ -10,13 +10,9 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class WordGenerator {
-	// private static final String[] WORDS = {
-        // "son", "defense", "systems", "production", "failure", "manner", 
-        // "potential", "man", "either", "series", "world", "logic", "java", 
-        // "engine", "secure", "network", "typing", "keyboard"
-    // };
-
-	public static void gettingSentence() {
+	public WordGenerator() {
+	}
+	public static List<String> gettingSentence() {
 		List<String> randomWord = new ArrayList<>();
 		try(BufferedReader reader = new BufferedReader(new FileReader("words.txt"))) {
 		String line;
@@ -28,19 +24,12 @@ public class WordGenerator {
 			e.printStackTrace();
 		}
 		Random random = new Random();
-		String result = randomWord.get(random.nextInt(randomWord.size()));
-		// System.out.println(randomWord);
-		System.out.println(result);
-		return;
-	}
-
-	public static void main(String[] args) { 
-		List<String> wordList = new ArrayList<>();
-		Random randomWords = new Random();
-		for(int i=0;i<10;i++) {
-			wordList.add(WORDS[randomWords.nextInt(WORDS.length)]);
+		String result[] = randomWord.get(random.nextInt(randomWord.size())).split(" ");
+		List<String> resultLine = new LinkedList<>();
+		for(int i=0;i<result.length;i++) {
+			resultLine.add(result[i]);
 		}
-		System.out.println(wordList);
-		gettingSentence();
+		// System.out.println(resultLine);
+		return resultLine;
 	}
 }
